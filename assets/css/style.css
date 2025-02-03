@@ -41,6 +41,17 @@ section {
 }
 
 /* Menu Icon */
+#close-menu {
+    display: block;
+}
+
+#open-menu {
+    display: none;
+    position: fixed;
+    bottom: 45px;
+    right: 45px;
+}
+
 #menu-button {
     position: fixed;
     bottom: 30px;
@@ -70,26 +81,28 @@ section {
 #sliding-navbar {
     position: fixed;
     bottom: 30px;
-    right: 30px;
-    width: 0;
-    height: 70px;
-    background: var(--theme-deep-blue);
+    right: 45px;
+    width: 0; /* Start closed */
+    height: 70px; /* Same height as the button */
+    background: var(--theme-deep-blue); /* Background color */
     overflow: hidden;
-    border-radius: 35px; /* Rounded edges */
+    border-radius: 25px; /* Rounded edges */
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: width 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: background 0.3s ease;
+    transition: width 0.3s ease, transform 0.3s ease, background 0.3s ease;
+    transform: scaleX(0);
+    transform-origin: center;
 }
+
 #sliding-navbar:hover {
-    background: var(--theme-dark-blue);
+    background: var(--theme-dark-blue); /* Change background on hover */
 }
 
 #sliding-navbar ul {
     list-style: none;
-    padding: 0;
+    padding: 0 30px 0 0;
     margin: 0;
     display: flex;
     gap: 20px;
@@ -97,15 +110,21 @@ section {
 
 #sliding-navbar li a {
     text-decoration: none;
-    color: var(--theme-deep-blue);
+    color: #fff;
     font-weight: bold;
     font-size: 14px;
 }
 
+#sliding-navbar li a:hover {
+    color: var(--theme-light-blue);
+}
+
 /* Navbar Expanded */
 #sliding-navbar.open {
-    width: 300px; /* Expanded width */
+    width: 375px;
+    transform: scaleX(1);
 }
+
 
 /* Contact Section */
 #contact {
